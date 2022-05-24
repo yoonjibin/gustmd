@@ -1,15 +1,15 @@
 package com.board.gustmd.domain.board.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.board.gustmd.domain.board.data.dto.Req.CreateBoardDto;
+import com.board.gustmd.domain.board.data.entity.Board;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("board")
 public class BoardController {
 
-    @GetMapping()
-    public void findAll(){
+    @PostMapping("")
+    public void createBoard(@RequestBody CreateBoardDto createBoardDto){
         return;
     }
 }
