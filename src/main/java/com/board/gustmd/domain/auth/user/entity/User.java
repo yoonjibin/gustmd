@@ -1,4 +1,4 @@
-package com.board.gustmd.domain.auth.data.entity;
+package com.board.gustmd.domain.auth.user.entity;
 
 import lombok.*;
 
@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long Member_id;
 
     @Column

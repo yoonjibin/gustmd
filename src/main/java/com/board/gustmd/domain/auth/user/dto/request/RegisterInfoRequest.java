@@ -1,4 +1,4 @@
-package com.board.gustmd.domain.auth.data.dto.request;
+package com.board.gustmd.domain.auth.user.dto.request;
 
 import lombok.Data;
 
