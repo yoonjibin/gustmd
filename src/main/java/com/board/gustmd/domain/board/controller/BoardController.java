@@ -1,7 +1,6 @@
 package com.board.gustmd.domain.board.controller;
 
-import com.board.gustmd.domain.board.data.dto.Req.CreateBoardDto;
-import com.board.gustmd.domain.board.data.entity.Board;
+import com.board.gustmd.domain.board.data.dto.request.CreateBoardRequest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public class BoardController {
 
     @PostMapping("")
-    public void createBoard(@RequestBody CreateBoardDto createBoardDto){
+    public void createBoard(@RequestBody CreateBoardRequest createBoardDto){
         return;
     }
 }
