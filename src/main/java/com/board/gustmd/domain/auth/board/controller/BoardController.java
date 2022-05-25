@@ -1,12 +1,15 @@
 package com.board.gustmd.domain.auth.board.controller;
 
 import com.board.gustmd.domain.auth.board.data.dto.request.CreateBoardRequest;
+import com.board.gustmd.domain.auth.board.data.dto.response.findAllBoardResponse;
 import com.board.gustmd.domain.auth.board.data.entity.Board;
 import com.board.gustmd.domain.auth.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,9 +18,14 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @PostMapping()
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void createBoard(@RequestBody CreateBoardRequest createBoardDto){
         boardService.createBoard (createBoardDto);
+    }
+
+    @GetMapping
+    public findAllBoardResponse findAllBoard(){
+        return boardService.findAllBoard();
     }
 }
