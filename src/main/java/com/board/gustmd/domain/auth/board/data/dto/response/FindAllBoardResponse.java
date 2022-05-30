@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class findAllBoardResponse {
+public class FindAllBoardResponse {
     private Long id;
     private String title;
     private String userName;

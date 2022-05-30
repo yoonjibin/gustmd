@@ -1,5 +1,6 @@
 package com.board.gustmd.domain.auth.board.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
