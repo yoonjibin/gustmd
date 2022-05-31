@@ -29,7 +29,7 @@ public class BoardController {
         return boardService.findAllBoard ();
     }
 
-    @GetMapping("{board_id}")
+    @GetMapping("find/{board_id}")
     public Optional<Board> findById(@PathVariable("board_id") Long id) {
         return boardService.findByBoardId(id);
     }
