@@ -29,8 +29,13 @@ public class BoardController {
         return boardService.findAllBoard ();
     }
 
-    @GetMapping("find/{board_id}")
-    public Optional<Board> findById(@PathVariable("board_id") Long id) {
-        return boardService.findByBoardId(id);
+    @GetMapping("{boardId}")
+    public Optional<Board> findById(@PathVariable("boardId") Long id) {
+        return boardService.findByBoardId (id);
+    }
+
+    @DeleteMapping("{boardId}")
+    public void deleteById(@PathVariable("boardId") Long id) {
+        boardService.deleteById(id);
     }
 }

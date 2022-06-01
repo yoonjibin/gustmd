@@ -37,4 +37,8 @@ public class BoardService {
         Optional<Board> BoardData=boardRepository.findById(id);
         return BoardData;
     }
+
+    public void deleteById(Long id){
+        boardRepository.deleteById(id);
+    }
 }
