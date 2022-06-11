@@ -1,6 +1,7 @@
 package com.board.gustmd.domain.auth.board.service;
 
 import com.board.gustmd.domain.auth.board.data.dto.request.CreateBoardRequest;
+import com.board.gustmd.domain.auth.board.data.dto.request.UpdateBoardRequest;
 import com.board.gustmd.domain.auth.board.data.dto.response.FindAllBoardResponse;
 import com.board.gustmd.domain.auth.board.data.entity.Board;
 import com.board.gustmd.domain.auth.board.repository.BoardRepository;
@@ -40,5 +41,9 @@ public class BoardService {
 
     public void deleteById(Long id){
         boardRepository.deleteById(id);
+    }
+
+    public void updateById(Long id, UpdateBoardRequest updateBoardRequest){
+
     }
 }
