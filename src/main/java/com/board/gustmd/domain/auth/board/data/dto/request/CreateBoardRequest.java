@@ -16,6 +16,6 @@ public class CreateBoardRequest {
     private String description;
 
     public Board toEntity() {
-        return Board.builder ().title (title).userName (userName).description (description).build ();
+        return Board.builder().title(title).userName(userName).description(description).build();
     }
 }

@@ -26,10 +26,10 @@ public class BoardService {
         List<FindAllBoardResponse> boardList = new ArrayList<>();
         boardRepository.findAll().forEach (board -> {
             boardList.add (FindAllBoardResponse.builder()
-                    .id (board.getId())
-                    .title (board.getTitle())
-                    .userName(board.getUserName())
-                    .build());
+                     .id (board.getId())
+                     .title (board.getTitle())
+                     .userName(board.getUserName())
+                     .build());
         });
         return boardList;
     }
@@ -44,6 +44,5 @@ public class BoardService {
     }
 
     public void updateById(Long id, UpdateBoardRequest updateBoardRequest){
-
     }
 }
