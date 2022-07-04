@@ -1,10 +1,10 @@
-package com.board.gustmd.domain.auth.board.service;
+package com.board.gustmd.domain.board.service;
 
-import com.board.gustmd.domain.auth.board.data.dto.request.CreateBoardRequest;
-import com.board.gustmd.domain.auth.board.data.dto.request.UpdateBoardRequest;
-import com.board.gustmd.domain.auth.board.data.dto.response.FindAllBoardResponse;
-import com.board.gustmd.domain.auth.board.data.entity.Board;
-import com.board.gustmd.domain.auth.board.repository.BoardRepository;
+import com.board.gustmd.domain.board.data.dto.request.CreateBoardRequest;
+import com.board.gustmd.domain.board.data.dto.request.UpdateBoardRequest;
+import com.board.gustmd.domain.board.data.dto.response.FindAllBoardResponse;
+import com.board.gustmd.domain.board.data.entity.Board;
+import com.board.gustmd.domain.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -35,8 +35,7 @@ public class BoardService {
     }
 
     public Optional<Board> findByBoardId(Long id) {
-        Optional<Board> BoardData=boardRepository.findById(id);
-        return BoardData;
+        return boardRepository.findById(id);
     }
 
     public void deleteById(Long id){
@@ -44,5 +43,8 @@ public class BoardService {
     }
 
     public void updateById(Long id, UpdateBoardRequest updateBoardRequest){
+        Board board=boardRepository.findById(id).orElseThrow();
+
+        board.update(updateBoardRequest);
     }
 }

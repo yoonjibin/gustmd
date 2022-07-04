@@ -1,6 +1,6 @@
-package com.board.gustmd.domain.auth.board.data.dto.request;
+package com.board.gustmd.domain.board.data.dto.request;
 
-import com.board.gustmd.domain.auth.board.data.entity.Board;
+import com.board.gustmd.domain.board.data.entity.Board;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
