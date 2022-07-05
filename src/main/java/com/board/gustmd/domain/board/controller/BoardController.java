@@ -1,12 +1,13 @@
-package com.board.gustmd.domain.auth.board.controller;
+package com.board.gustmd.domain.board.controller;
 
-import com.board.gustmd.domain.auth.board.data.dto.request.CreateBoardRequest;
-import com.board.gustmd.domain.auth.board.data.dto.request.UpdateBoardRequest;
-import com.board.gustmd.domain.auth.board.data.dto.response.FindAllBoardResponse;
-import com.board.gustmd.domain.auth.board.data.entity.Board;
-import com.board.gustmd.domain.auth.board.service.BoardService;
+import com.board.gustmd.domain.board.data.dto.request.CreateBoardRequest;
+import com.board.gustmd.domain.board.data.dto.request.UpdateBoardRequest;
+import com.board.gustmd.domain.board.data.dto.response.FindAllBoardResponse;
+import com.board.gustmd.domain.board.data.entity.Board;
+import com.board.gustmd.domain.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +22,9 @@ public class BoardController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createBoard(@RequestBody CreateBoardRequest createBoardDto) {
+    public ResponseEntity<Void> createBoard(@RequestBody CreateBoardRequest createBoardDto) {
         boardService.createBoard(createBoardDto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -31,7 +33,7 @@ public class BoardController {
     }
 
     @GetMapping("{boardId}")
-    public Optional<Board> findById(@PathVariable("boardId") Long id) {
+    public ResponseEntity<Board> findById(@PathVariable("boardId") Long id) {
         return boardService.findByBoardId (id);
     }
 
