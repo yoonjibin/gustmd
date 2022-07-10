@@ -35,7 +35,7 @@ public class BoardService {
     }
 
     public Board findByBoardId(Long id) {
-        return boardRepository.findById(id);
+        return boardRepository.findById(id).orElseThrow(()->);
     }
 
     public void deleteById(Long id){

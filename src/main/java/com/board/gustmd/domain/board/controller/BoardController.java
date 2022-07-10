@@ -34,7 +34,7 @@ public class BoardController {
 
     @GetMapping("{boardId}")
     public ResponseEntity<Board> findById(@PathVariable("boardId") Long id) {
-        return boardService.findByBoardId (id);
+        return boardService.findByBoardId(id);
     }
 
     @DeleteMapping("{boardId}")
