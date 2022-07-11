@@ -10,9 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/board")
@@ -28,12 +25,12 @@ public class BoardController {
     }
 
     @GetMapping
-    public List<FindAllBoardResponse> findAllBoard() {
+    public FindAllBoardResponse findAllBoard() {
         return boardService.findAllBoard();
     }
 
     @GetMapping("{boardId}")
-    public ResponseEntity<Board> findById(@PathVariable("boardId") Long id) {
+    public Board findById(@PathVariable("boardId") Long id) {
         return boardService.findByBoardId(id);
     }
 

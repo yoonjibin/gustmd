@@ -2,15 +2,15 @@ package com.board.gustmd.domain.board.data.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
-@Getter
+@Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class FindAllBoardResponse {
-    List<BoardResponse> list;
+public class BoardResponse {
+    private Long id;
+    private String title;
+    private String userName;
 }
