@@ -4,6 +4,7 @@ import com.board.gustmd.domain.board.data.dto.request.CreateBoardRequest;
 import com.board.gustmd.domain.board.data.dto.request.UpdateBoardRequest;
 import com.board.gustmd.domain.board.data.dto.response.BoardResponse;
 import com.board.gustmd.domain.board.data.dto.response.FindAllBoardResponse;
+import com.board.gustmd.domain.board.data.dto.response.FindByBoardIdResponse;
 import com.board.gustmd.domain.board.data.entity.Board;
 import com.board.gustmd.domain.board.exception.BoardNotFound;
 import com.board.gustmd.domain.board.repository.BoardRepository;
@@ -37,8 +38,15 @@ public class BoardService {
                 .build();
     }
 
-    public Board findByBoardId(Long id) {
-        return boardRepository.findById(id).orElseThrow(BoardNotFound::new);
+    public FindByBoardIdResponse findByBoardId(Long id) {
+        Board boardInfo=boardRepository.findById(id).orElseThrow(BoardNotFound::new);
+
+        return FindByBoardIdResponse.builder()
+                                    .id(boardInfo.getId())
+                                    .title(boardInfo.getTitle())
+                                    .description(boardInfo.getDescription())
+                                    .userName(boardInfo.getUserName())
+                                    .build();
     }
 
     public void deleteById(Long id){
