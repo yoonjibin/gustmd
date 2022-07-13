@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @AllArgsConstructor @NoArgsConstructor
+@Builder
 public class Board {
     @Id
     @GeneratedValue
@@ -16,8 +17,8 @@ public class Board {
     private String userName;
     private String description;
 
-    public void update(UpdateBoardRequest updateBoardRequest){
-        this.title=updateBoardRequest.getTitle();
-        this.description= updateBoardRequest.getDescription();
+    public void update(String title,String description){
+        this.title=title;
+        this.description=description;
     }
 }

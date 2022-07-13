@@ -10,6 +10,7 @@ import com.board.gustmd.domain.board.exception.BoardNotFound;
 import com.board.gustmd.domain.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,35 +20,34 @@ import java.util.List;
 public class BoardService {
     private final BoardRepository boardRepository;
 
+    @Transactional
     public void createBoard(CreateBoardRequest createBoardRequest) {
         Board boardData = createBoardRequest.toEntity();
         boardRepository.save(boardData);
     }
 
+    @Transactional(readOnly = true)
     public FindAllBoardResponse findAllBoard() {
         List<BoardResponse> boardList=findAllBoardInfo();
         return new FindAllBoardResponse(boardList);
     }
 
+    @Transactional(readOnly = true)
     public FindByBoardIdResponse findByBoardId(Long boardId) {
         Board boardInfo=boardRepository.findById(boardId).orElseThrow(BoardNotFound::new);
-        Long id =boardInfo.getId();
-        String title=boardInfo.getTitle();
-        String userName=boardInfo.getUserName();
-        String description=boardInfo.getDescription();
-
-        return new FindByBoardIdResponse(id,title,userName,description);
+        return new FindByBoardIdResponse(boardInfo);
     }
 
+    @Transactional
     public void deleteById(Long id){
         boardRepository.findById(id).orElseThrow(BoardNotFound::new);
         boardRepository.deleteById(id);
     }
 
+    @Transactional
     public void updateById(Long id, UpdateBoardRequest updateBoardRequest){
         Board board=boardRepository.findById(id).orElseThrow(BoardNotFound::new);
-
-        board.update(updateBoardRequest);
+        board.update(updateBoardRequest.getTitle(),updateBoardRequest.getDescription());
     }
     private List<BoardResponse> findAllBoardInfo(){
         List<BoardResponse> List = new ArrayList<>();

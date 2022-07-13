@@ -6,6 +6,7 @@ import com.board.gustmd.domain.board.data.dto.response.FindAllBoardResponse;
 import com.board.gustmd.domain.board.data.dto.response.FindByBoardIdResponse;
 import com.board.gustmd.domain.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,12 +38,14 @@ public class BoardController {
     }
 
     @DeleteMapping("{boardId}")
-    public void deleteById(@PathVariable("boardId") Long id) {
+    public ResponseEntity<Void> deleteById(@PathVariable("boardId") Long id) {
         boardService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PatchMapping("{boardId}")
-    public void patchById(@PathVariable("boardId")Long id,@RequestBody UpdateBoardRequest updateBoardDto){
+    @PutMapping("{boardId}")
+    public ResponseEntity<Void> patchById(@PathVariable("boardId")Long id,@RequestBody UpdateBoardRequest updateBoardDto){
         boardService.updateById(id,updateBoardDto);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
