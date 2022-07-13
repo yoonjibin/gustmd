@@ -1,16 +1,12 @@
 package com.board.gustmd.domain.board.data.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@RequiredArgsConstructor
 public class BoardResponse {
-    private Long id;
-    private String title;
-    private String userName;
+    private final Long id;
+    private final String title;
+    private final String userName;
+
 }

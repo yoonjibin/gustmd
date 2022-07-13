@@ -1,17 +1,12 @@
 package com.board.gustmd.domain.board.data.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@RequiredArgsConstructor
 public class FindByBoardIdResponse {
-    private Long id;
-    private String title;
-    private String description;
-    private String userName;
+    private final Long id;
+    private final String title;
+    private final String description;
+    private final String userName;
 }

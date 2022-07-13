@@ -1,19 +1,14 @@
 package com.board.gustmd.domain.board.data.dto.request;
 
 import com.board.gustmd.domain.board.data.entity.Board;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Getter
+@RequiredArgsConstructor
 public class CreateBoardRequest {
-    private String title;
-    private String userName;
-    private String description;
+    private final String title;
+    private final String userName;
+    private final String description;
 
     public Board toEntity() {
         return Board.builder().title(title).userName(userName).description(description).build();

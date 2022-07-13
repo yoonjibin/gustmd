@@ -25,28 +25,18 @@ public class BoardService {
     }
 
     public FindAllBoardResponse findAllBoard() {
-        List<BoardResponse> boardList = new ArrayList<>();
-        boardRepository.findAll().forEach(board -> {
-            boardList.add(BoardResponse.builder()
-                     .id(board.getId())
-                     .title(board.getTitle())
-                     .userName(board.getUserName())
-                     .build());
-        });
-        return FindAllBoardResponse.builder()
-                .list(boardList)
-                .build();
+        List<BoardResponse> boardList=findAllBoardInfo();
+        return new FindAllBoardResponse(boardList);
     }
 
-    public FindByBoardIdResponse findByBoardId(Long id) {
-        Board boardInfo=boardRepository.findById(id).orElseThrow(BoardNotFound::new);
+    public FindByBoardIdResponse findByBoardId(Long boardId) {
+        Board boardInfo=boardRepository.findById(boardId).orElseThrow(BoardNotFound::new);
+        Long id =boardInfo.getId();
+        String title=boardInfo.getTitle();
+        String userName=boardInfo.getUserName();
+        String description=boardInfo.getDescription();
 
-        return FindByBoardIdResponse.builder()
-                                    .id(boardInfo.getId())
-                                    .title(boardInfo.getTitle())
-                                    .description(boardInfo.getDescription())
-                                    .userName(boardInfo.getUserName())
-                                    .build();
+        return new FindByBoardIdResponse(id,title,userName,description);
     }
 
     public void deleteById(Long id){
@@ -58,5 +48,15 @@ public class BoardService {
         Board board=boardRepository.findById(id).orElseThrow(BoardNotFound::new);
 
         board.update(updateBoardRequest);
+    }
+    private List<BoardResponse> findAllBoardInfo(){
+        List<BoardResponse> List = new ArrayList<>();
+        boardRepository.findAll().forEach(board -> {
+            Long id = board.getId();
+            String title= board.getTitle();
+            String userName=board.getUserName();
+            List.add(new BoardResponse(id,title,userName));
+        });
+        return List;
     }
 }

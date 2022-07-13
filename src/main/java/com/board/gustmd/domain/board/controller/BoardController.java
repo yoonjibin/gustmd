@@ -2,10 +2,8 @@ package com.board.gustmd.domain.board.controller;
 
 import com.board.gustmd.domain.board.data.dto.request.CreateBoardRequest;
 import com.board.gustmd.domain.board.data.dto.request.UpdateBoardRequest;
-import com.board.gustmd.domain.board.data.dto.response.BoardResponse;
 import com.board.gustmd.domain.board.data.dto.response.FindAllBoardResponse;
 import com.board.gustmd.domain.board.data.dto.response.FindByBoardIdResponse;
-import com.board.gustmd.domain.board.data.entity.Board;
 import com.board.gustmd.domain.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,7 +27,7 @@ public class BoardController {
     @GetMapping
     public ResponseEntity<FindAllBoardResponse> findAllBoard() {
         FindAllBoardResponse findAllBoardList = boardService.findAllBoard();
-        return new ResponseEntity<>(findAllBoardList,HttpStatus.OK);
+        return new ResponseEntity<FindAllBoardResponse>(findAllBoardList,HttpStatus.OK);
     }
 
     @GetMapping("{boardId}")

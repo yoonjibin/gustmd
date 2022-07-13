@@ -1,16 +1,11 @@
 package com.board.gustmd.domain.board.data.dto.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter
+@RequiredArgsConstructor
 public class UpdateBoardRequest{
-    private String title;
+    private final String title;
 
-    private String description;
+    private final String description;
 }

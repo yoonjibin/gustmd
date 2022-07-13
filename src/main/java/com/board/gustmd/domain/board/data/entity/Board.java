@@ -6,9 +6,8 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter
+@Getter
 @AllArgsConstructor @NoArgsConstructor
-@Builder
 public class Board {
     @Id
     @GeneratedValue
