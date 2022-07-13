@@ -1,6 +1,5 @@
 package com.board.gustmd.domain.board.data.entity;
 
-import com.board.gustmd.domain.board.data.dto.request.UpdateBoardRequest;
 import lombok.*;
 
 import javax.persistence.*;
