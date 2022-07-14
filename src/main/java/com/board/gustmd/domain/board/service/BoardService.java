@@ -27,13 +27,13 @@ public class BoardService {
     }
 
     @Transactional(readOnly = true)
-    public FindAllBoardResponse findAllBoard() {
+    public FindAllBoardResponse findBoardList() {
         List<BoardResponse> boardList=findAllBoardInfo();
         return new FindAllBoardResponse(boardList);
     }
 
     @Transactional(readOnly = true)
-    public FindByBoardIdResponse findByBoardId(Long boardId) {
+    public FindByBoardIdResponse findBoardById(Long boardId) {
         Board boardInfo=boardRepository.findById(boardId).orElseThrow(BoardNotFound::new);
         return new FindByBoardIdResponse(boardInfo);
     }

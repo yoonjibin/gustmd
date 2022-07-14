@@ -25,24 +25,24 @@ public class BoardController {
     }
 
     @GetMapping
-    public ResponseEntity<FindAllBoardResponse> findAllBoard() {
-        FindAllBoardResponse findAllBoardList = boardService.findAllBoard();
+    public ResponseEntity<FindAllBoardResponse> findBoardList(){
+        FindAllBoardResponse findAllBoardList = boardService.findBoardList();
         return new ResponseEntity<FindAllBoardResponse>(findAllBoardList,HttpStatus.OK);
     }
 
-    @GetMapping("{boardId}")
-    public ResponseEntity<FindByBoardIdResponse> findById(@PathVariable("boardId") Long id) {
-        FindByBoardIdResponse findByBoardInfo = boardService.findByBoardId(id);
+    @GetMapping("detail/{boardId}")
+    public ResponseEntity<FindByBoardIdResponse> findBoardById(@PathVariable("boardId") Long id) {
+        FindByBoardIdResponse findByBoardInfo = boardService.findBoardById(id);
         return new ResponseEntity<>(findByBoardInfo,HttpStatus.OK);
     }
 
-    @DeleteMapping("{boardId}")
+    @DeleteMapping("/{boardId}")
     public ResponseEntity<Void> deleteById(@PathVariable("boardId") Long id) {
         boardService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("{boardId}")
+    @PutMapping("/{boardId}")
     public ResponseEntity<Void> patchById(@PathVariable("boardId")Long id,@RequestBody UpdateBoardRequest updateBoardDto){
         boardService.updateById(id,updateBoardDto);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
