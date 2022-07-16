@@ -6,7 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@AllArgsConstructor @NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class Board {
     @Id
