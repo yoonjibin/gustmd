@@ -1,5 +1,6 @@
 package com.board.gustmd.domain.board.data.entity;
 
+import com.board.gustmd.domain.sign.data.entity.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,7 +17,8 @@ public class Board {
     private String title;
     private String userName;
     private String description;
-
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    private User user;
     public void update(String title,String description){
         this.title=title;
         this.description=description;
