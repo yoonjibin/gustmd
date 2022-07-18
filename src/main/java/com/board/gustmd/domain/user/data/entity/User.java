@@ -1,4 +1,4 @@
-package com.board.gustmd.domain.sign.data.entity;
+package com.board.gustmd.domain.user.data.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
