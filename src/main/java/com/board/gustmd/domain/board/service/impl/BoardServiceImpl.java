@@ -1,4 +1,4 @@
-package com.board.gustmd.domain.board.service;
+package com.board.gustmd.domain.board.service.impl;
 
 import com.board.gustmd.domain.board.data.dto.request.CreateBoardRequest;
 import com.board.gustmd.domain.board.data.dto.request.UpdateBoardRequest;
@@ -8,6 +8,7 @@ import com.board.gustmd.domain.board.data.dto.response.FindByBoardIdResponse;
 import com.board.gustmd.domain.board.data.entity.Board;
 import com.board.gustmd.domain.board.exception.BoardNotFound;
 import com.board.gustmd.domain.board.repository.BoardRepository;
+import com.board.gustmd.domain.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +18,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
     private final BoardRepository boardRepository;
 
     @Transactional
