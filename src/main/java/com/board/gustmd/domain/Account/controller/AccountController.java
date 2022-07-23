@@ -18,8 +18,8 @@ public class AccountController {
 
     @PostMapping("register")
     public ResponseEntity<Void>register(RegisterRequest registerRequest){
-        
-        return new ResponseEntity<>(HttpStatus.OK);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PostMapping("/login")

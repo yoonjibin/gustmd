@@ -1,14 +1,21 @@
 package com.board.gustmd.domain.Account.service.impl;
 
 import com.board.gustmd.domain.Account.data.dto.request.RegisterRequest;
+import com.board.gustmd.domain.Account.repository.AccountRepository;
 import com.board.gustmd.domain.Account.service.AccountService;
 import com.board.gustmd.domain.user.data.entity.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
+    private final AccountRepository accountRepository;
+    private final PasswordEncoder passwordEncoder;
     @Override
     public void register(RegisterRequest registerRequest) {
-        User user=new User();
+        User user=registerRequest.toEntity(passwordEncoder.encode(registerRequest.getPassword()));
     }
 
     @Override
