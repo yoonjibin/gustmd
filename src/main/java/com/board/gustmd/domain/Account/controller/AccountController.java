@@ -1,5 +1,6 @@
 package com.board.gustmd.domain.Account.controller;
 
+import com.board.gustmd.domain.Account.data.dto.request.RegisterRequest;
 import com.board.gustmd.domain.Account.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,8 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping("register")
-    public ResponseEntity<Void>register(){
+    public ResponseEntity<Void>register(RegisterRequest registerRequest){
+        
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
