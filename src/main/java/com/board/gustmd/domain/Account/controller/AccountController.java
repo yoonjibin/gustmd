@@ -18,7 +18,7 @@ public class AccountController {
 
     @PostMapping("register")
     public ResponseEntity<Void>register(RegisterRequest registerRequest){
-
+        accountService.register(registerRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
