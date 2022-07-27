@@ -5,10 +5,7 @@ import com.board.gustmd.domain.Account.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,7 +14,7 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping("register")
-    public ResponseEntity<Void>register(RegisterRequest registerRequest){
+    public ResponseEntity<Void>register(@RequestBody RegisterRequest registerRequest){
         accountService.register(registerRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

@@ -1,7 +1,9 @@
 package com.board.gustmd.domain.Account.data.dto.request;
 
 import com.board.gustmd.domain.user.data.entity.User;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Getter

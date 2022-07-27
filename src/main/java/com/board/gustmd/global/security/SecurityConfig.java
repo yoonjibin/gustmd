@@ -19,6 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .cors().disable()
+                .formLogin().disable()
 
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -27,9 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
 
-                .antMatchers(HttpMethod.GET,"/board").authenticated()
+                .antMatchers(HttpMethod.GET,"/board").permitAll()
                 .antMatchers(HttpMethod.GET,"/board/*").authenticated()
-                .antMatchers(HttpMethod.POST,"/board").authenticated()
+                .antMatchers(HttpMethod.POST,"/board").permitAll()
                 .antMatchers(HttpMethod.DELETE,"/board/*").authenticated()
                 .antMatchers(HttpMethod.PUT,"/board/*").authenticated()
                 .antMatchers(HttpMethod.POST,"/account/*").permitAll()
