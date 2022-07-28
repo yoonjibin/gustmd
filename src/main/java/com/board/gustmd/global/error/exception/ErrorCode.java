@@ -8,7 +8,8 @@ import lombok.Getter;
 @AllArgsConstructor
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ErrorCode {
-    BOARD_NOT_FOUND(404,"board Not Found");
+    BOARD_NOT_FOUND(404,"Board Not Found"),
+    ALREADY_EXIST_EMAIL(400,"Already Exist Email");
 
     private final int status;
     private final String message;

@@ -19,7 +19,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Transactional
     public void register(RegisterRequest registerRequest) {
-        System.out.println(registerRequest.getEmail());
+
         User user=registerRequest.toEntity(passwordEncoder.encode(registerRequest.getPassword()));
         userRepository.save(user);
     }
