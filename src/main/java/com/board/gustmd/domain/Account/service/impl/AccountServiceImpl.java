@@ -22,6 +22,7 @@ public class AccountServiceImpl implements AccountService {
     @Transactional
     public void register(RegisterRequest registerRequest) {
         userUtil.checkExistsEmail(registerRequest.getEmail());
+        userUtil.checkExistName(registerRequest.getName());
         User user=registerRequest.toEntity(passwordEncoder.encode(registerRequest.getPassword()));
         userRepository.save(user);
     }

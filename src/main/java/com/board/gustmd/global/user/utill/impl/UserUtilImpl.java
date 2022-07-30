@@ -2,6 +2,7 @@ package com.board.gustmd.global.user.utill.impl;
 
 import com.board.gustmd.domain.user.repository.UserRepository;
 import com.board.gustmd.global.user.exception.AlreadyExistEmailException;
+import com.board.gustmd.global.user.exception.AlreadyExistNameException;
 import com.board.gustmd.global.user.utill.UserUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,13 @@ public class UserUtilImpl implements UserUtil {
     public void checkExistsEmail(String email) {
         if(userRepository.existsById(email)){
             throw new AlreadyExistEmailException();
+        }
+    }
+
+    @Override
+    public void checkExistName(String name) {
+        if(userRepository.existsByName(name)){
+            throw new AlreadyExistNameException();
         }
     }
 }
