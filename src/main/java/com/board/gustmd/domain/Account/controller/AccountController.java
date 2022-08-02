@@ -1,5 +1,6 @@
 package com.board.gustmd.domain.Account.controller;
 
+import com.board.gustmd.domain.Account.data.dto.request.LoginRequest;
 import com.board.gustmd.domain.Account.data.dto.request.RegisterRequest;
 import com.board.gustmd.domain.Account.service.AccountService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,8 @@ public class AccountController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Void>login(){
+    public ResponseEntity<Void>login(@RequestBody LoginRequest loginRequest){
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @PatchMapping("logout")
