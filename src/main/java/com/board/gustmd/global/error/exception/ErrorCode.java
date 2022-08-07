@@ -10,6 +10,7 @@ import lombok.Getter;
 public enum ErrorCode {
     BOARD_NOT_FOUND(404,"Board Not Found"),
     ALREADY_EXIST_EMAIL(400,"Already Exist Email"),
+    USER_NOT_FOUND(404,"User Not Found"),
     ALREADY_EXIST_NAME(400,"Already Exist Name");
 
     private final int status;

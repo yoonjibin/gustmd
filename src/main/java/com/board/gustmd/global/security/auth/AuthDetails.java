@@ -1,4 +1,4 @@
-package com.board.gustmd.global.auth;
+package com.board.gustmd.global.security.auth;
 
 import com.board.gustmd.domain.user.data.entity.User;
 import lombok.RequiredArgsConstructor;
