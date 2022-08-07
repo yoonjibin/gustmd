@@ -12,5 +12,4 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 public class JwtProperties {
     private final String accessSecret;
     private final String refreshSecret;
-
 }
