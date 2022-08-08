@@ -1,12 +1,21 @@
 package com.board.gustmd.global.security.jwt;
 
 import com.board.gustmd.global.security.auth.AuthDetailService;
+import com.board.gustmd.global.security.exception.ExpiredTokenException;
+import com.board.gustmd.global.security.exception.InvalidTokenException;
+import io.jsonwebtoken.*;
 import com.board.gustmd.global.security.properties.JwtProperties;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
+import java.net.http.HttpRequest;
 import java.util.Base64;
 import java.util.Date;
 
@@ -27,10 +36,35 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    private String generateAccessToken(String email){
+    public String generateAccessToken(String email){
         return generateToken(email,"access",jwtProperties.getAccessSecret(),60*15);
     }
-    private String generateRefreshToken(String email){
+    public String generateRefreshToken(String email){
         return generateToken(email,"refresh",jwtProperties.getRefreshSecret(),60*60*24*7);
+    }
+    public Authentication getAuthentication(String token){
+        UserDetails userDetails = authDetailService.loadUserByUsername(getTokenSubject(token,jwtProperties.getAccessSecret()));
+        return new UsernamePasswordAuthenticationToken(userDetails,"",userDetails.getAuthorities());
+    }
+    private Claims getTokenBody(String token, String secret){
+        try{
+            return Jwts.parser()
+                    .setSigningKey(Base64.getEncoder().encodeToString(secret.getBytes()))
+                    .parseClaimsJws(token)
+                    .getBody();
+        }catch(ExpiredJwtException e){
+            throw new ExpiredTokenException();
+        }catch(SignatureException|MalformedJwtException e){
+            throw new InvalidTokenException();
+        }
+    }
+    public String resolveToken(HttpServletRequest request){
+        String token = request.getHeader("Authorization");
+        if(token != null&&token.startsWith("Bearer"))
+            return token.replace("Bearer","");
+        return null;
+    }
+    private String getTokenSubject(String token,String secret){
+        return getTokenBody(token,secret).get("email",String.class);
     }
 }

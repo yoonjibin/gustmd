@@ -11,6 +11,9 @@ public enum ErrorCode {
     BOARD_NOT_FOUND(404,"Board Not Found"),
     ALREADY_EXIST_EMAIL(400,"Already Exist Email"),
     USER_NOT_FOUND(404,"User Not Found"),
+    EXPIRED_TOKEN(401,"Expired Token"),
+    INVALID_TOKEN(401, "Invalid Token"),
+    UNAUTHORIZED(401, "Unauthorized"),
     ALREADY_EXIST_NAME(400,"Already Exist Name");
 
     private final int status;
