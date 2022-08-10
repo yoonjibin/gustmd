@@ -1,17 +1,29 @@
 package com.board.gustmd.global.security;
 
+import com.board.gustmd.global.CustomAuthenticationEntryPoint;
+import com.board.gustmd.global.security.exception.handler.JwtExceptionHandler;
+import com.board.gustmd.global.security.filter.JwtFilter;
+import com.board.gustmd.global.security.jwt.JwtTokenProvider;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsUtils;
 
 @Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private final JwtTokenProvider jwtTokenProvider;
+    private final ObjectMapper objectMapper;
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -35,7 +47,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,"/account/*").permitAll()
                 .antMatchers(HttpMethod.PATCH,"/account/*").permitAll()
 
-                .anyRequest().denyAll();
+                .anyRequest().denyAll()
+                .and()
+
+                .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint(objectMapper))
+                .and()
+
+                .addFilterAfter(new JwtFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new JwtExceptionHandler(objectMapper),UsernamePasswordAuthenticationFilter.class);
     }
     @Bean
     public PasswordEncoder passwordEncoder(){

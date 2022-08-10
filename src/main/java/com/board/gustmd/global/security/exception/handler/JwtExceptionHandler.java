@@ -39,6 +39,5 @@ public class JwtExceptionHandler extends OncePerRequestFilter {
         ErrorResponse errorResponse = new ErrorResponse(errorCode.getStatus(),errorCode.getMessage());
         String valueAsString = objectMapper.writeValueAsString(errorResponse);
         response.getWriter().write(valueAsString);
-
     }
 }
