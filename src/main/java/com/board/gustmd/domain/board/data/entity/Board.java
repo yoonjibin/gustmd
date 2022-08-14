@@ -15,6 +15,7 @@ public class Board {
     @GeneratedValue
     private Long id;
     private String title;
+    @Column(name = "user_name")
     private String userName;
     private String description;
     @ManyToOne(cascade = CascadeType.REMOVE)

@@ -32,6 +32,7 @@ public class AccountController {
     }
     @PatchMapping("logout")
     public ResponseEntity<Void>logout(){
+        accountService.logout();
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @PatchMapping("refresh")

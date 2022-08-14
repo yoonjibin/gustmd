@@ -32,18 +32,21 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @Transactional
     public TokenResponse login(String email) {
         User user = userUtils.getUserByEmail(email);
         String access = jwtTokenProvider.generateAccessToken(email);
         String refresh = jwtTokenProvider.generateRefreshToken(email);
         Integer accessExp = 60 * 15;
         Integer refreshExp = 60*60*24*7;
-        user.updateRefreshToken(refresh);
+        System.out.println();
+        user.update(refresh);
 
         return new TokenResponse(access,refresh,accessExp,refreshExp);
     }
 
     @Override
+    @Transactional
     public void logout() {
 
     }
