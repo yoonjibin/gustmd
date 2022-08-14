@@ -1,6 +1,5 @@
 package com.board.gustmd.global.security;
 
-import com.board.gustmd.global.CustomAuthenticationEntryPoint;
 import com.board.gustmd.global.security.exception.handler.JwtExceptionHandler;
 import com.board.gustmd.global.security.filter.JwtFilter;
 import com.board.gustmd.global.security.jwt.JwtTokenProvider;

@@ -1,4 +1,4 @@
-package com.board.gustmd.global;
+package com.board.gustmd.global.security;
 
 import com.board.gustmd.global.error.ErrorResponse;
 import com.board.gustmd.global.error.exception.ErrorCode;
