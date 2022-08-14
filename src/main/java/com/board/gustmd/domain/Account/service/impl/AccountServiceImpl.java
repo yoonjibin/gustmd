@@ -48,7 +48,8 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Transactional
     public void logout() {
-
+        User user = userUtils.getCurrentUser();
+        user.update(null);
     }
 
     @Override

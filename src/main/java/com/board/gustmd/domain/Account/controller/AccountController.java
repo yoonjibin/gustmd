@@ -7,6 +7,7 @@ import com.board.gustmd.domain.Account.service.AccountService;
 import com.board.gustmd.domain.Account.utils.AuthValidator;
 import com.board.gustmd.global.user.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.connector.Request;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
