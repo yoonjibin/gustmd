@@ -6,9 +6,13 @@ import com.board.gustmd.domain.user.data.entity.User;
 import com.board.gustmd.domain.user.repository.UserRepository;
 import com.board.gustmd.global.user.exception.UserNotFountException;
 import com.board.gustmd.global.user.utils.UserUtils;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class UserUtilsImpl implements UserUtils {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     @Override
     public User getCurrentUser() {
         return null;
@@ -21,15 +25,11 @@ public class UserUtilsImpl implements UserUtils {
 
     @Override
     public void checkExistName(String name) {
-        if(userRepository.existsByName(name)){
-            throw new AlreadyExistNameException();
-        }
+        if(userRepository.existsByName(name)) throw new AlreadyExistNameException ();
     }
 
     @Override
     public void checkExistsEmail(String email) {
-        if(userRepository.existsById(email)){
-            throw new AlreadyExistEmailException();
-        }
+        if(userRepository.existsById(email)) throw new AlreadyExistEmailException ();
     }
 }

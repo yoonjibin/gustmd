@@ -1,6 +1,7 @@
 package com.board.gustmd.global.security.auth;
 
 import com.board.gustmd.domain.user.repository.UserRepository;
+import com.board.gustmd.global.user.exception.UserNotFountException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,6 +17,6 @@ public class AuthDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return userRepository.findUserByEmail(email)
                 .map(AuthDetails::new)
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(UserNotFountException::new);
     }
 }

@@ -8,6 +8,6 @@ import lombok.RequiredArgsConstructor;
 public class TokenResponse {
     private final String accessToken;
     private final String refreshToken;
-    private final String accessExp;
-    private final String refreshExp;
+    private final Integer accessExp;
+    private final Integer refreshExp;
 }
