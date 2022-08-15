@@ -6,6 +6,7 @@ import com.board.gustmd.domain.Account.service.AccountService;
 import com.board.gustmd.domain.Account.utils.AuthValidator;
 import com.board.gustmd.domain.user.data.entity.User;
 import com.board.gustmd.domain.user.repository.UserRepository;
+import com.board.gustmd.global.security.exception.InvalidTokenException;
 import com.board.gustmd.global.security.jwt.JwtTokenProvider;
 import com.board.gustmd.global.user.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
@@ -34,15 +35,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Transactional
     public TokenResponse login(String email) {
-        User user = userUtils.getUserByEmail(email);
-        String access = jwtTokenProvider.generateAccessToken(email);
-        String refresh = jwtTokenProvider.generateRefreshToken(email);
-        Integer accessExp = 60 * 15;
-        Integer refreshExp = 60*60*24*7;
-        System.out.println();
-        user.update(refresh);
-
-        return new TokenResponse(access,refresh,accessExp,refreshExp);
+        return getTokenResponse(email);
     }
 
     @Override
@@ -53,7 +46,28 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void refresh() {
+    public TokenResponse refresh(String refreshToken) {
+        String email = jwtTokenProvider.exactEmailFromRefreshToken(refreshToken);
+        User user = userUtils.getUserByEmail(email);
+        if(!refreshToken.equals(user.getRefreshToken())) throw new InvalidTokenException();
+        return getTokenResponseByRefreshToken(email,user);
+    }
+    private TokenResponse getTokenResponse(String email) {
+        User user = userUtils.getUserByEmail(email);
+        return getTokenResponse(email, user);
+    }
 
+    private TokenResponse getTokenResponse(String email, User user) {
+        String access = jwtTokenProvider.generateAccessToken(email);
+        String refresh = jwtTokenProvider.generateRefreshToken(email);
+        Integer accessExp = 60 * 15;
+        Integer refreshExp = 60*60*24*7;
+        user.update(refresh);
+
+        return new TokenResponse(access,refresh,accessExp,refreshExp);
+    }
+
+    private TokenResponse getTokenResponseByRefreshToken(String email,User user){
+        return getTokenResponse(email, user);
     }
 }

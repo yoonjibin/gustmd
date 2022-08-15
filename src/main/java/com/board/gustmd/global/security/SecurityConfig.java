@@ -28,9 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .cors().disable()
                 .formLogin().disable()
+                .cors()
 
+                .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
@@ -43,9 +44,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,"/board").permitAll()
                 .antMatchers(HttpMethod.DELETE,"/board/*").authenticated()
                 .antMatchers(HttpMethod.PUT,"/board/*").authenticated()
-                .antMatchers(HttpMethod.POST,"/account/register").permitAll()
-                .antMatchers(HttpMethod.POST,"/account/login").permitAll()
-                .antMatchers(HttpMethod.PATCH,"/account/*").permitAll()
+                .antMatchers(HttpMethod.POST,"/account/*").permitAll()
+                .antMatchers(HttpMethod.PATCH,"/account/refresh").permitAll()
+                .antMatchers(HttpMethod.PATCH,"/account/logout").authenticated()
 
                 .anyRequest().denyAll()
                 .and()

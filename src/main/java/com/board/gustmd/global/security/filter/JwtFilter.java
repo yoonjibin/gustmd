@@ -22,7 +22,7 @@ public class JwtFilter extends OncePerRequestFilter {
              FilterChain filterChain)
             throws ServletException, IOException {
         String token = jwtTokenProvider.resolveToken(request);
-        if(token != null&& !token.isEmpty()){
+        if(token != null){
             Authentication authentication = jwtTokenProvider.getAuthentication(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }

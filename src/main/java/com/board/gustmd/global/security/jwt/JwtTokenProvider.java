@@ -55,17 +55,21 @@ public class JwtTokenProvider {
                     .getBody();
         }catch(ExpiredJwtException e){
             throw new ExpiredTokenException();
-        }catch(SignatureException|MalformedJwtException e){
+        }catch(MalformedJwtException | SignatureException e){
             throw new InvalidTokenException();
         }
     }
     public String resolveToken(HttpServletRequest request){
         String token = request.getHeader("Authorization");
-        if(token != null&&token.startsWith("Bearer")&&token.startsWith("Bearer "))
-            return token.replace("Bearer","");
+        if((token != null) && token.startsWith ("Bearer "))
+            return token.replace ("Bearer ", "");
         return null;
     }
     private String getTokenSubject(String token,String secret){
         return getTokenBody(token,secret).get("email",String.class);
+    }
+    public String exactEmailFromRefreshToken(String token){
+        String refresh = token.replace("Bearer ","");
+        return getTokenSubject(refresh,jwtProperties.getRefreshSecret());
     }
 }

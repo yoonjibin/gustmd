@@ -8,5 +8,5 @@ public interface AccountService {
      void register(RegisterRequest registerRequest);
      TokenResponse login(String email);
      void logout();
-     void refresh();
+     TokenResponse refresh(String refreshToken);
 }
