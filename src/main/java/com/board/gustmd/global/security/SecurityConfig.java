@@ -29,9 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .formLogin().disable()
-                .cors()
+                .cors().disable()
 
-                .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
@@ -47,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,"/account/*").permitAll()
                 .antMatchers(HttpMethod.PATCH,"/account/refresh").permitAll()
                 .antMatchers(HttpMethod.PATCH,"/account/logout").authenticated()
+                .antMatchers(HttpMethod.POST,"account/withdrawal").authenticated ()
 
                 .anyRequest().denyAll()
                 .and()

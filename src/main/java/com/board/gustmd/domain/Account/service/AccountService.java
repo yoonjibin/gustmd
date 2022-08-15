@@ -9,4 +9,5 @@ public interface AccountService {
      TokenResponse login(String email);
      void logout();
      TokenResponse refresh(String refreshToken);
+     void withdrawal();
 }

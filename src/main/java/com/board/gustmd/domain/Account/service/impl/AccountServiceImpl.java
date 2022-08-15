@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class AccountServiceImpl implements AccountService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final AuthValidator authValidator;
     private final UserUtils userUtils;
     private final JwtTokenProvider jwtTokenProvider;
 
@@ -35,7 +34,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Transactional
     public TokenResponse login(String email) {
-        return getTokenResponse(email);
+        return getTokenResponseToLogin(email);
     }
 
     @Override
@@ -52,7 +51,14 @@ public class AccountServiceImpl implements AccountService {
         if(!refreshToken.equals(user.getRefreshToken())) throw new InvalidTokenException();
         return getTokenResponseByRefreshToken(email,user);
     }
-    private TokenResponse getTokenResponse(String email) {
+
+    @Override
+    public void withdrawal() {
+        User userInfo = userUtils.getCurrentUser();
+        userRepository.delete(userInfo);
+    }
+
+    private TokenResponse getTokenResponseToLogin(String email) {
         User user = userUtils.getUserByEmail(email);
         return getTokenResponse(email, user);
     }

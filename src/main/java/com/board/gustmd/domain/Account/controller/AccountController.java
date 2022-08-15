@@ -5,14 +5,10 @@ import com.board.gustmd.domain.Account.data.dto.request.RegisterRequest;
 import com.board.gustmd.domain.Account.data.dto.response.TokenResponse;
 import com.board.gustmd.domain.Account.service.AccountService;
 import com.board.gustmd.domain.Account.utils.AuthValidator;
-import com.board.gustmd.global.user.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 
 
 @RestController
@@ -31,8 +27,8 @@ public class AccountController {
     @PostMapping("/login")
     public ResponseEntity<TokenResponse>login(@RequestBody LoginRequest loginRequest){
         String validatedEmail = authValidator.ValidateUser(loginRequest.getEmail(), loginRequest.getPassword());
-        TokenResponse tokenData =  accountService.login(validatedEmail);
-        return new ResponseEntity(tokenData,HttpStatus.OK);
+        TokenResponse tokenData = accountService.login(validatedEmail);
+        return new ResponseEntity<>(tokenData,HttpStatus.OK);
     }
     @PatchMapping("logout")
     public ResponseEntity<Void>logout(){
@@ -42,6 +38,11 @@ public class AccountController {
     @PatchMapping("refresh")
     public ResponseEntity<TokenResponse>refresh(@RequestHeader("Refresh-Token")String refreshToken){
         TokenResponse tokenData = accountService.refresh(refreshToken);
-        return new ResponseEntity(tokenData,HttpStatus.OK);
+        return new ResponseEntity<>(tokenData,HttpStatus.OK);
+    }
+    @PostMapping("withdrawal")
+    public ResponseEntity<Void>withdrawal(){
+        accountService.withdrawal();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
