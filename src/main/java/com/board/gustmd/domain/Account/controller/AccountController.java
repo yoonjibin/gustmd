@@ -18,7 +18,7 @@ public class AccountController {
     private final AccountService accountService;
     private final AuthValidator authValidator;
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public ResponseEntity<Void>register(@RequestBody RegisterRequest registerRequest){
         accountService.register(registerRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -30,17 +30,17 @@ public class AccountController {
         TokenResponse tokenData = accountService.login(validatedEmail);
         return new ResponseEntity<>(tokenData,HttpStatus.OK);
     }
-    @PatchMapping("logout")
+    @PatchMapping("/logout")
     public ResponseEntity<Void>logout(){
         accountService.logout();
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @PatchMapping("refresh")
+    @PatchMapping("/refresh")
     public ResponseEntity<TokenResponse>refresh(@RequestHeader("Refresh-Token")String refreshToken){
         TokenResponse tokenData = accountService.refresh(refreshToken);
         return new ResponseEntity<>(tokenData,HttpStatus.OK);
     }
-    @PostMapping("withdrawal")
+    @PostMapping("/withdrawal")
     public ResponseEntity<Void>withdrawal(){
         accountService.withdrawal();
         return new ResponseEntity<>(HttpStatus.OK);

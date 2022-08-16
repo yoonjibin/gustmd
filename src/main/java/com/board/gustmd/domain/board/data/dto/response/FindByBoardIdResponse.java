@@ -15,6 +15,6 @@ public class FindByBoardIdResponse {
         this.id = board.getId();
         this.title = board.getTitle();
         this.description = board.getDescription();
-        this.userName = board.getUserName();
+        this.userName = board.getUser().getName();
     }
 }

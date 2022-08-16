@@ -8,5 +8,4 @@ public class BoardResponse {
     private final Long id;
     private final String title;
     private final String userName;
-
 }

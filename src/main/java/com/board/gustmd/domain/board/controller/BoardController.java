@@ -27,10 +27,10 @@ public class BoardController {
     @GetMapping
     public ResponseEntity<FindAllBoardResponse> findBoardList(){
         FindAllBoardResponse findAllBoardList = boardService.findBoardList();
-        return new ResponseEntity<FindAllBoardResponse>(findAllBoardList,HttpStatus.OK);
+        return new ResponseEntity<>(findAllBoardList,HttpStatus.OK);
     }
 
-    @GetMapping("detail/{boardId}")
+    @GetMapping("/detail/{boardId}")
     public ResponseEntity<FindByBoardIdResponse> findBoardById(@PathVariable("boardId") Long id) {
         FindByBoardIdResponse findByBoardInfo = boardService.findBoardById(id);
         return new ResponseEntity<>(findByBoardInfo,HttpStatus.OK);

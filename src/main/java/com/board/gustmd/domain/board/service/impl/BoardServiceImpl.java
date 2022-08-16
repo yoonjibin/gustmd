@@ -9,6 +9,8 @@ import com.board.gustmd.domain.board.data.entity.Board;
 import com.board.gustmd.domain.board.exception.BoardNotFound;
 import com.board.gustmd.domain.board.repository.BoardRepository;
 import com.board.gustmd.domain.board.service.BoardService;
+import com.board.gustmd.domain.user.data.entity.User;
+import com.board.gustmd.global.user.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,10 +22,12 @@ import java.util.List;
 @Service
 public class BoardServiceImpl implements BoardService {
     private final BoardRepository boardRepository;
+    private final UserUtils userUtils;
 
     @Transactional
     public void createBoard(CreateBoardRequest createBoardRequest) {
-        Board boardData = createBoardRequest.toEntity();
+        User userInfo = userUtils.getCurrentUser();
+        Board boardData = createBoardRequest.toEntity(userInfo);
         boardRepository.save(boardData);
     }
 
@@ -55,7 +59,7 @@ public class BoardServiceImpl implements BoardService {
         boardRepository.findAll().forEach(board -> {
             Long id = board.getId();
             String title= board.getTitle();
-            String userName=board.getUserName();
+            String userName=board.getUser().getName();
             List.add(new BoardResponse(id,title,userName));
         });
         return List;
