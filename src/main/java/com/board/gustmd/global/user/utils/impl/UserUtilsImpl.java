@@ -1,6 +1,5 @@
 package com.board.gustmd.global.user.utils.impl;
 
-import com.board.gustmd.global.security.jwt.JwtTokenProvider;
 import com.board.gustmd.global.user.exception.AlreadyExistEmailException;
 import com.board.gustmd.global.user.exception.AlreadyExistNameException;
 import com.board.gustmd.domain.user.data.entity.User;
@@ -8,7 +7,6 @@ import com.board.gustmd.domain.user.repository.UserRepository;
 import com.board.gustmd.global.user.exception.UserNotFountException;
 import com.board.gustmd.global.user.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.connector.Request;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +14,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserUtilsImpl implements UserUtils {
     private final UserRepository userRepository;
-    private final JwtTokenProvider jwtTokenProvider;
     @Override
     public User getCurrentUser() {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();

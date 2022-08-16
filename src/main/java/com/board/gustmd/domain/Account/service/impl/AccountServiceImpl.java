@@ -46,7 +46,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public TokenResponse refresh(String refreshToken) {
-        String email = jwtTokenProvider.exactEmailFromRefreshToken(refreshToken);
+        String email = jwtTokenProvider.exractEmailFromRefreshToken(refreshToken);
         User user = userUtils.getUserByEmail(email);
         if(!refreshToken.equals(user.getRefreshToken())) throw new InvalidTokenException();
         return getTokenResponseByRefreshToken(email,user);

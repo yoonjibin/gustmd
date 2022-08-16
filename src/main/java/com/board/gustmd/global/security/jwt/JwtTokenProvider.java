@@ -68,7 +68,7 @@ public class JwtTokenProvider {
     private String getTokenSubject(String token,String secret){
         return getTokenBody(token,secret).get("email",String.class);
     }
-    public String exactEmailFromRefreshToken(String token){
+    public String exractEmailFromRefreshToken(String token){
         String refresh = token.replace("Bearer ","");
         return getTokenSubject(refresh,jwtProperties.getRefreshSecret());
     }

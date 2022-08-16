@@ -45,6 +45,6 @@ public class BoardController {
     @PutMapping("/{boardId}")
     public ResponseEntity<Void> patchById(@PathVariable("boardId")Long id,@RequestBody UpdateBoardRequest updateBoardDto){
         boardService.updateById(id,updateBoardDto);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

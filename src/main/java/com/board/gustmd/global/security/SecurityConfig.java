@@ -38,15 +38,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
 
+                //board
                 .antMatchers(HttpMethod.GET,"/board").authenticated()
                 .antMatchers(HttpMethod.GET,"/board/detail/*").authenticated()
                 .antMatchers(HttpMethod.POST,"/board").authenticated()
                 .antMatchers(HttpMethod.DELETE,"/board/*").authenticated()
                 .antMatchers(HttpMethod.PUT,"/board/*").authenticated()
+                //account
                 .antMatchers(HttpMethod.POST,"/account/*").permitAll()
                 .antMatchers(HttpMethod.PATCH,"/account/refresh").permitAll()
                 .antMatchers(HttpMethod.PATCH,"/account/logout").authenticated()
-                .antMatchers(HttpMethod.POST,"account/withdrawal").authenticated ()
+                .antMatchers(HttpMethod.POST,"/account/withdrawal").authenticated()
+                //user
+                .antMatchers(HttpMethod.GET,"/user").authenticated()
+
 
                 .anyRequest().denyAll()
                 .and()
