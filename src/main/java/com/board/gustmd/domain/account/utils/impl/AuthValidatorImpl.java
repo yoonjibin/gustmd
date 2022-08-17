@@ -1,7 +1,7 @@
-package com.board.gustmd.domain.Account.utils.impl;
+package com.board.gustmd.domain.account.utils.impl;
 
-import com.board.gustmd.domain.Account.exception.PasswordMismatchException;
-import com.board.gustmd.domain.Account.utils.AuthValidator;
+import com.board.gustmd.domain.account.exception.PasswordMismatchException;
+import com.board.gustmd.domain.account.utils.AuthValidator;
 import com.board.gustmd.domain.user.data.entity.User;
 import com.board.gustmd.global.user.utils.UserUtils;
 import lombok.RequiredArgsConstructor;

@@ -1,9 +1,8 @@
-package com.board.gustmd.domain.Account.service.impl;
+package com.board.gustmd.domain.account.service.impl;
 
-import com.board.gustmd.domain.Account.data.dto.request.RegisterRequest;
-import com.board.gustmd.domain.Account.data.dto.response.TokenResponse;
-import com.board.gustmd.domain.Account.service.AccountService;
-import com.board.gustmd.domain.Account.utils.AuthValidator;
+import com.board.gustmd.domain.account.data.dto.request.RegisterRequest;
+import com.board.gustmd.domain.account.data.dto.response.TokenResponse;
+import com.board.gustmd.domain.account.service.AccountService;
 import com.board.gustmd.domain.user.data.entity.User;
 import com.board.gustmd.domain.user.repository.UserRepository;
 import com.board.gustmd.global.security.exception.InvalidTokenException;

@@ -1,10 +1,10 @@
-package com.board.gustmd.domain.Account.controller;
+package com.board.gustmd.domain.account.controller;
 
-import com.board.gustmd.domain.Account.data.dto.request.LoginRequest;
-import com.board.gustmd.domain.Account.data.dto.request.RegisterRequest;
-import com.board.gustmd.domain.Account.data.dto.response.TokenResponse;
-import com.board.gustmd.domain.Account.service.AccountService;
-import com.board.gustmd.domain.Account.utils.AuthValidator;
+import com.board.gustmd.domain.account.data.dto.request.LoginRequest;
+import com.board.gustmd.domain.account.data.dto.request.RegisterRequest;
+import com.board.gustmd.domain.account.data.dto.response.TokenResponse;
+import com.board.gustmd.domain.account.service.AccountService;
+import com.board.gustmd.domain.account.utils.AuthValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
