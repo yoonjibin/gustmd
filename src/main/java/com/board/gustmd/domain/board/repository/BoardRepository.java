@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface BoardRepository extends JpaRepository<Board,Long> {
     List<Board> findBoardsByUser(User userInfo);
+    Boolean existsByUserAndTitle(User user,String title);
 }
 

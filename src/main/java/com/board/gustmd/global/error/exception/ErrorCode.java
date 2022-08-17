@@ -12,6 +12,7 @@ public enum ErrorCode {
     ALREADY_EXIST_EMAIL(400,"Already Exist Email"),
     PASSWORD_MISMATCH(400,"PasswordMismatch"),
     ALREADY_EXIST_NAME(400,"Already Exist Name"),
+    NOT_THE_OWNER(400,"Not The Owner"),
     EXPIRED_TOKEN(401,"Expired Token"),
     INVALID_TOKEN(401, "Invalid Token"),
     UNAUTHORIZED(401, "Unauthorized"),

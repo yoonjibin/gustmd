@@ -9,6 +9,7 @@ import com.board.gustmd.domain.board.data.entity.Board;
 import com.board.gustmd.domain.board.exception.BoardNotFound;
 import com.board.gustmd.domain.board.repository.BoardRepository;
 import com.board.gustmd.domain.board.service.BoardService;
+import com.board.gustmd.domain.board.service.BoardValidator;
 import com.board.gustmd.domain.user.data.entity.User;
 import com.board.gustmd.global.user.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ import java.util.List;
 public class BoardServiceImpl implements BoardService {
     private final BoardRepository boardRepository;
     private final UserUtils userUtils;
+    private final BoardValidator boardValidator;
 
     @Transactional
     public void createBoard(CreateBoardRequest createBoardRequest) {
@@ -45,14 +47,18 @@ public class BoardServiceImpl implements BoardService {
 
     @Transactional
     public void deleteById(Long id){
-        boardRepository.findById(id).orElseThrow(BoardNotFound::new);
+        User userInfo = userUtils.getCurrentUser();
+        Board boardInfo = boardRepository.findById(id).orElseThrow(BoardNotFound::new);
+        boardValidator.validate(userInfo,boardInfo);
         boardRepository.deleteById(id);
     }
 
     @Transactional
     public void updateById(Long id, UpdateBoardRequest updateBoardRequest){
-        Board board=boardRepository.findById(id).orElseThrow(BoardNotFound::new);
-        board.update(updateBoardRequest.getTitle(),updateBoardRequest.getDescription());
+        User userInfo = userUtils.getCurrentUser();
+        Board boardInfo = boardRepository.findById(id).orElseThrow(BoardNotFound::new);
+        boardValidator.validate(userInfo,boardInfo);
+        boardInfo.update(updateBoardRequest.getTitle(),updateBoardRequest.getDescription());
     }
     private List<BoardResponse> findAllBoardInfo(){
         List<BoardResponse> List = new ArrayList<>();
