@@ -41,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
     @Transactional
     public void logout() {
         User user = userUtils.getCurrentUser();
-        user.update(null);
+        user.updateRefreshToken(null);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class AccountServiceImpl implements AccountService {
         String refresh = jwtTokenProvider.generateRefreshToken(email);
         Integer accessExp = 60 * 15;
         Integer refreshExp = 60*60*24*7;
-        user.update(refresh);
+        user.updateRefreshToken(refresh);
 
         return new TokenResponse(access,refresh,accessExp,refreshExp);
     }

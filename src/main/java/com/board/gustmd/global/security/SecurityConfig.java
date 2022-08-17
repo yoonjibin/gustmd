@@ -50,7 +50,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PATCH,"/account/logout").authenticated()
                 .antMatchers(HttpMethod.POST,"/account/withdrawal").authenticated()
                 //user
-                .antMatchers(HttpMethod.GET,"/user").authenticated()
+                .antMatchers(HttpMethod.GET,"/user/my").authenticated()
+                .antMatchers(HttpMethod.PUT,"/user").authenticated()
 
 
                 .anyRequest().denyAll()
