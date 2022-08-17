@@ -1,6 +1,6 @@
 package com.board.gustmd.global.security.auth;
 
-import com.board.gustmd.domain.user.data.entity.User;
+import com.board.gustmd.domain.profile.data.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

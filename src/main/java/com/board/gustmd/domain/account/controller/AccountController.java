@@ -26,7 +26,7 @@ public class AccountController {
 
     @PostMapping("/login")
     public ResponseEntity<TokenResponse>login(@RequestBody LoginRequest loginRequest){
-        String validatedEmail = authValidator.ValidateUser(loginRequest.getEmail(), loginRequest.getPassword());
+        String validatedEmail = authValidator.validateUser(loginRequest.getEmail(), loginRequest.getPassword());
         TokenResponse tokenData = accountService.login(validatedEmail);
         return new ResponseEntity<>(tokenData,HttpStatus.OK);
     }

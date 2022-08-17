@@ -1,8 +1,8 @@
-package com.board.gustmd.domain.user.controller;
+package com.board.gustmd.domain.profile.controller;
 
-import com.board.gustmd.domain.user.data.dto.request.UpdateProfileRequest;
-import com.board.gustmd.domain.user.data.dto.response.ExractMyProfileResponse;
-import com.board.gustmd.domain.user.service.UserService;
+import com.board.gustmd.domain.profile.data.dto.request.UpdateProfileRequest;
+import com.board.gustmd.domain.profile.data.dto.response.ExractMyProfileResponse;
+import com.board.gustmd.domain.profile.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

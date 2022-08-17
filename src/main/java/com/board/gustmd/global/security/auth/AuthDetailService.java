@@ -1,6 +1,6 @@
 package com.board.gustmd.global.security.auth;
 
-import com.board.gustmd.domain.user.repository.UserRepository;
+import com.board.gustmd.domain.profile.repository.UserRepository;
 import com.board.gustmd.global.user.exception.UserNotFountException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

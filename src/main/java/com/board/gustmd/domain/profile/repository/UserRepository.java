@@ -1,6 +1,6 @@
-package com.board.gustmd.domain.user.repository;
+package com.board.gustmd.domain.profile.repository;
 
-import com.board.gustmd.domain.user.data.entity.User;
+import com.board.gustmd.domain.profile.data.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.board.gustmd.domain.user.data.dto.response;
+package com.board.gustmd.domain.profile.data.dto.response;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

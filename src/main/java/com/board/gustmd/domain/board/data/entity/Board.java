@@ -1,6 +1,6 @@
 package com.board.gustmd.domain.board.data.entity;
 
-import com.board.gustmd.domain.user.data.entity.User;
+import com.board.gustmd.domain.profile.data.entity.User;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;

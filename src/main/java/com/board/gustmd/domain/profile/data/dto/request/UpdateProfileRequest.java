@@ -1,10 +1,8 @@
-package com.board.gustmd.domain.user.data.dto.request;
+package com.board.gustmd.domain.profile.data.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 @Getter
 @AllArgsConstructor

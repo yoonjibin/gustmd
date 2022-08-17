@@ -1,7 +1,6 @@
 package com.board.gustmd.global.user.utils;
 
-import com.board.gustmd.domain.user.data.entity.User;
-import org.apache.catalina.connector.Request;
+import com.board.gustmd.domain.profile.data.entity.User;
 
 public interface UserUtils {
     User getCurrentUser();

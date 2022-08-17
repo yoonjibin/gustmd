@@ -1,10 +1,10 @@
-package com.board.gustmd.domain.user.service.impl;
+package com.board.gustmd.domain.profile.service.impl;
 
-import com.board.gustmd.domain.user.data.dto.request.UpdateProfileRequest;
-import com.board.gustmd.domain.user.data.dto.response.ExractMyProfileResponse;
-import com.board.gustmd.domain.user.data.entity.User;
-import com.board.gustmd.domain.user.repository.UserRepository;
-import com.board.gustmd.domain.user.service.UserService;
+import com.board.gustmd.domain.profile.data.dto.request.UpdateProfileRequest;
+import com.board.gustmd.domain.profile.data.dto.response.ExractMyProfileResponse;
+import com.board.gustmd.domain.profile.data.entity.User;
+import com.board.gustmd.domain.profile.repository.UserRepository;
+import com.board.gustmd.domain.profile.service.UserService;
 import com.board.gustmd.global.board.BoardUtils;
 import com.board.gustmd.global.user.utils.UserUtils;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package com.board.gustmd.domain.board.data.dto.request;
 
 import com.board.gustmd.domain.board.data.entity.Board;
-import com.board.gustmd.domain.user.data.entity.User;
+import com.board.gustmd.domain.profile.data.entity.User;
 import lombok.*;
 
 @Getter
