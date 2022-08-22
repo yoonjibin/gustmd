@@ -46,8 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PUT,"/board/*").authenticated()
                 //account
                 .antMatchers(HttpMethod.POST,"/account/*").permitAll()
-                .antMatchers(HttpMethod.PATCH,"/account/refresh").permitAll()
-                .antMatchers(HttpMethod.PATCH,"/account/logout").authenticated()
+                .antMatchers(HttpMethod.PUT,"/account/refresh").permitAll()
+                .antMatchers(HttpMethod.PUT,"/account/logout").authenticated()
                 .antMatchers(HttpMethod.POST,"/account/withdrawal").authenticated()
                 //user
                 .antMatchers(HttpMethod.GET,"/user/my").authenticated()

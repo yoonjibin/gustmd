@@ -30,12 +30,12 @@ public class AccountController {
         TokenResponse tokenData = accountService.login(validatedEmail);
         return new ResponseEntity<>(tokenData,HttpStatus.OK);
     }
-    @PatchMapping("/logout")
+    @PutMapping("/logout")
     public ResponseEntity<Void>logout(){
         accountService.logout();
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @PatchMapping("/refresh")
+    @PutMapping("/refresh")
     public ResponseEntity<TokenResponse>refresh(@RequestHeader("Refresh-Token")String refreshToken){
         TokenResponse tokenData = accountService.refresh(refreshToken);
         return new ResponseEntity<>(tokenData,HttpStatus.OK);
